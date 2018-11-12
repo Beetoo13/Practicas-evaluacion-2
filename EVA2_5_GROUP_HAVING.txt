@@ -1,0 +1,64 @@
+SELECTS Y COMANDOS REALIZADOS EN WORKBENCH POR ERROR DEL SHELL
+
+use northwind;
+
+
+
+show tables;
+
+
+
+desc orderdetails;
+
+
+
+select count(*) from orderdetails;
+
+
+
+select * from products;
+
+
+
+select productid, orderid from orderdetails;
+
+
+
+select distinct(productid) from orderdetails;
+
+
+
+select b.productname, sum(a.unitprice * quantity) as Total from orderdetails a inner join products b on a.productid = b.productid;
+
+
+
+select sum(unitprice * quantity) from orderdetails;
+
+
+
+select b.productname, sum(a.unitprice * quantity) as Total from orderdetails a inner join products b on a.productid = b.productid group by a.productid;
+
+
+
+select productid from products where productname like 'chai';
+
+
+
+select productname from products where productid = 1;
+
+
+
+select sum(quantity * unitprice) as Total from orderdetails where productid = 1;
+
+
+
+select a.contactname, sum(b.quantity * b.unitprice) as Total from customers a inner join orders c on a.customerid = c.customerid inner join orderdetails b on b.orderid = c.orderid group by a.contactname;
+
+
+
+select a.contactname, sum(b.quantity * b.unitprice) as Total from customers a inner join orders c on a.customerid = c.customerid inner join orderdetails b on b.orderid = c.orderid group by a.contactname having sum(b.quantity * b.unitprice) > 10000;
+
+
+
+select b.productname, sum(a.unitprice * a.quantity) as Total from orderdetails a inner join products b on a.productid = b.productid group by a.productid having sum(a.unitprice * a.quantity) > 10000;
+

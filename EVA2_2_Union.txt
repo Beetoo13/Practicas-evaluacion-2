@@ -1,0 +1,233 @@
+MySQL Shell 8.0.12
+
+Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+
+
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect -c Beto@localhost
+The -c option is deprecated, please use --mysql or -mc instead
+Creating a Classic session to 'Beto@localhost'
+Please provide the password for 'Beto@localhost': *********
+Save password for 'Beto@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 22
+Server version: 8.0.12 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| employees          |
+| evaluacion_1       |
+| evaluacion_2       |
+| ex_eva1            |
+| information_schema |
+| mysql              |
+| northwind          |
+| performance_schema |
+| prueba             |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+12 rows in set (0.0008 sec)
+
+ MySQL  localhost:3306 ssl  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching table and column names from `sakila` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  sakila  SQL > show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.0016 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > desc actor;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| actor_id    | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment              |
+| first_name  | varchar(45)          | NO   |     | NULL              |                             |
+| last_name   | varchar(45)          | NO   | MUL | NULL              |                             |
+| last_update | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+4 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > desc customer;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| customer_id | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment              |
+| store_id    | tinyint(3) unsigned  | NO   | MUL | NULL              |                             |
+| first_name  | varchar(45)          | NO   |     | NULL              |                             |
+| last_name   | varchar(45)          | NO   | MUL | NULL              |                             |
+| email       | varchar(50)          | YES  |     | NULL              |                             |
+| address_id  | smallint(5) unsigned | NO   | MUL | NULL              |                             |
+| active      | tinyint(1)           | NO   |     | 1                 |                             |
+| create_date | datetime             | NO   |     | NULL              |                             |
+| last_update | timestamp            | YES  |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+9 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > desc staff;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| staff_id    | tinyint(3) unsigned  | NO   | PRI | NULL              | auto_increment              |
+| first_name  | varchar(45)          | NO   |     | NULL              |                             |
+| last_name   | varchar(45)          | NO   |     | NULL              |                             |
+| address_id  | smallint(5) unsigned | NO   | MUL | NULL              |                             |
+| picture     | blob                 | YES  |     | NULL              |                             |
+| email       | varchar(50)          | YES  |     | NULL              |                             |
+| store_id    | tinyint(3) unsigned  | NO   | MUL | NULL              |                             |
+| active      | tinyint(1)           | NO   |     | 1                 |                             |
+| username    | varchar(16)          | NO   |     | NULL              |                             |
+| password    | varchar(40)          | YES  |     | NULL              |                             |
+| last_update | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+11 rows in set (0.0018 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > use evaluacion_2;
+Default schema set to `evaluacion_2`.
+Fetching table and column names from `evaluacion_2` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > show tables;
++------------------------+
+| Tables_in_evaluacion_2 |
++------------------------+
+| a                      |
+| b                      |
++------------------------+
+2 rows in set (0.0014 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > use sakila;
+Default schema set to `sakila`.
+Fetching table and column names from `sakila` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  sakila  SQL > show tables;
++----------------------------+
+| Tables_in_sakila           |
++----------------------------+
+| actor                      |
+| actor_info                 |
+| address                    |
+| category                   |
+| city                       |
+| country                    |
+| customer                   |
+| customer_list              |
+| film                       |
+| film_actor                 |
+| film_category              |
+| film_list                  |
+| film_text                  |
+| inventory                  |
+| language                   |
+| nicer_but_slower_film_list |
+| payment                    |
+| rental                     |
+| sales_by_film_category     |
+| sales_by_store             |
+| staff                      |
+| staff_list                 |
+| store                      |
++----------------------------+
+23 rows in set (0.0017 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > desc city;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| city_id     | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment              |
+| city        | varchar(50)          | NO   |     | NULL              |                             |
+| country_id  | smallint(5) unsigned | NO   | MUL | NULL              |                             |
+| last_update | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+4 rows in set (0.0017 sec)
+
+ MySQL  localhost:3306 ssl  sakila  SQL > desc country;
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| Field       | Type                 | Null | Key | Default           | Extra                       |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+| country_id  | smallint(5) unsigned | NO   | PRI | NULL              | auto_increment              |
+| country     | varchar(50)          | NO   |     | NULL              |                             |
+| last_update | timestamp            | NO   |     | CURRENT_TIMESTAMP | on update CURRENT_TIMESTAMP |
++-------------+----------------------+------+-----+-------------------+-----------------------------+
+3 rows in set (0.0019 sec)
+
+OPERACIONES HECHAS EN WORKBENCH
+
+select first_name, last_name from actor;
+
+select first_name, last_name from customer;
+
+select first_name, last_name from staff;
+
+select first_name, last_name from actor order by last_name desc limit 1;
+
+select * from A union select * from B;
+
+select 'A', nombre from A 
+union 
+select 'B', nombre from B;
+
+select 'Actor' as Tabla, first_name, last_name from actor
+union
+select 'Staff' as Tabla, first_name, last_name from staff;	
+
+(select 'Ciudad' as Tabla, city from city limit 10)
+union
+(select 'País' as Tabla, country from country limit 10);
+
+(select 'Ciudad' as Tabla, city from city limit 10)
+union
+(select 'País' as Tabla, country from country limit 10)
+order by city;
+
+(select 'Actor' as Tabla, first_name, last_name from actor limit 10)
+union
+(select 'Staff' as Tabla, first_name, last_name from staff)
+order by last_name;	
+
+select first_name, last_name from actor where last_name ='TEMPLE';
+
+select first_name, last_name from actor where last_name like 'W%';
+
+select first_name, last_name from actor where last_name like '%A';
+
+select first_name, last_name from actor where last_name like '%W%';
+
+select count(*) from actor where last_name like '%W%';

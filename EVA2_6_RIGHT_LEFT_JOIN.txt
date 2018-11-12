@@ -1,0 +1,41 @@
+SELECTS Y COMANDOS REALIZADOS EN WORKBENCH POR ERROR DEL SHELL
+
+use evaluacion_2;
+
+
+
+show tables;
+
+
+
+create table tablaB( id int, nombre varchar(5));
+
+
+
+insert into tablaB values(1, 'Temo'), (2, 'Beto'), (3, 'Rente'), (4, 'Lalo'), (5, 'Aaron');
+
+
+
+select * from tablaA a left outer join tablaB b on a.nombre = b.nombre;
+
+
+
+select * from tablaA a left outer join tablaB b on a.nombre = b.nombre where b.nombre is null;
+
+
+
+select * from tablaA a right outer join tablaB b on a.nombre = b.nombre where a.nombre is null;
+
+
+
+select * from tablaA a left outer join tablaB b on a.nombre = b.nombre where a.nombre is not null;
+
+
+
+use northwind;
+
+select a.orderid, b.companyname from orders a right join customers b on a.customerid = b.customerid order by a.orderid;
+
+
+
+select a.productname from products a right join orderdetails b on a.productid = b.productid where a.productid is null;

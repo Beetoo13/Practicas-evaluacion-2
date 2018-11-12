@@ -1,0 +1,37 @@
+SELECTS Y COMANDOS REALIZADOS EN WORKBENCH POR ERROR DEL SHELL
+
+use northwind;
+
+
+
+show tables;
+
+
+
+desc orderdetails;
+
+
+
+desc products;
+
+
+
+select a.orderid, b.productname, a.unitprice, a.quantity, (a.unitprice * a.quantity) as subtotal from orderdetails a inner join products b on a.productid = b.productid limit 20;
+
+desc categories;
+
+
+
+desc suppliers;
+
+
+
+select a.orderid, b.productname, a.quantity, a.unitprice, c.categoryname, d.companyname, (a.unitprice * a.quantity) as subtotal from orderdetails a  inner join products b on a.productid = b.productid inner join categories c on b.categoryid = c.categoryid inner join suppliers d on b.supplierid = d.supplierid limit 100;
+
+
+
+desc orders;
+
+
+
+desc employees;

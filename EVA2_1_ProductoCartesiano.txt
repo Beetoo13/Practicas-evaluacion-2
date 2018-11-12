@@ -1,0 +1,135 @@
+MySQL Shell 8.0.12
+
+Copyright (c) 2016, 2018, Oracle and/or its affiliates. All rights reserved.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type '\help' or '\?' for help; '\quit' to exit.
+
+
+ MySQL  JS > \sql
+Switching to SQL mode... Commands end with ;
+
+ MySQL  SQL > \connect -c Beto@localhost
+The -c option is deprecated, please use --mysql or -mc instead
+Creating a Classic session to 'Beto@localhost'
+Please provide the password for 'Beto@localhost': *********
+Save password for 'Beto@localhost:3306'? [Y]es/[N]o/Ne[v]er (default No): y
+Fetching schema names for autocompletion... Press ^C to stop.
+Your MySQL connection id is 9
+Server version: 8.0.12 MySQL Community Server - GPL
+No default schema selected; type \use <schema> to set one.
+
+ MySQL  localhost:3306 ssl  SQL > show databases;
++--------------------+
+| Database           |
++--------------------+
+| evaluacion_1       |
+| evaluacion_2       |
+| ex_eva1            |
+| information_schema |
+| mysql              |
+| performance_schema |
+| prueba             |
+| sakila             |
+| sys                |
+| world              |
++--------------------+
+10 rows in set (0.0009 sec)
+
+ MySQL  localhost:3306 ssl  SQL > use evaluacion_2;
+Default schema set to `evaluacion_2`.
+Fetching table and column names from `evaluacion_2` for auto-completion... Press ^C to stop.
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > create table A(
+                                            ... nombre varchar(10));
+Query OK, 0 rows affected (1.1662 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > create table B( nombre varchar(10));
+Query OK, 0 rows affected (0.5815 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > show tables;
++------------------------+
+| Tables_in_evaluacion_2 |
++------------------------+
+| a                      |
+| b                      |
++------------------------+
+2 rows in set (0.0016 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > desc table A;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'table A' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > desc A;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| nombre | varchar(10) | YES  |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+1 row in set (0.1308 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A (1, 2, 3, 4, 5);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1, 2, 3, 4, 5)' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A (1);
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '1)' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values (1);
+Query OK, 1 row affected (0.2090 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values (2);
+Query OK, 1 row affected (0.0799 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values (3);
+Query OK, 1 row affected (0.0890 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values (4);
+Query OK, 1 row affected (0.1004 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values (5);
+Query OK, 1 row affected (0.1248 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values (A);
+ERROR: 1054 (42S22): Unknown column 'A' in 'field list'
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values ('A');
+Query OK, 1 row affected (0.1523 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values ('B');
+Query OK, 1 row affected (0.1152 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values ('C');
+Query OK, 1 row affected (0.0705 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values ('D');
+Query OK, 1 row affected (0.0683 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into B values ('E');
+Query OK, 1 row affected (0.0890 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > delete * from A;
+ERROR: 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '* from A' at line 1
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > truncate A;
+Query OK, 0 rows affected (0.7663 sec)
+
+ MySQL  localhost:3306 ssl  evaluacion_2  SQL > insert into A values ('1'), ('2'), ('3'), ('4'), ('5');
+Query OK, 5 rows affected (0.1330 sec)
+
+Records: 5  Duplicates: 0  Warnings: 0
+
+SELECTS REALIZADOS EN WORKBENCH
+
+select * from A,B;
+
+select * from B,A;
+
+select A.nombre, B.nombre from A,B;
+
+select * from A,B order by A.Nombre, B.Nombre;
+
+select * from B,A order by B.Nombre, A.Nombre;
+
+select Tabla_B.Nombre as Nombre_B, Tabla_A.Nombre as Nombre_A from B Tabla_B,A Tabla_A order by Tabla_B.Nombre, Tabla_A.Nombre;
